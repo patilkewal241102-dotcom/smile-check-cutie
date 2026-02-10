@@ -43,6 +43,8 @@
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       display: none;
+      margin-left: auto;
+      margin-right: auto;
       position: relative;
       z-index: 2;
       background: white;
