@@ -63,6 +63,16 @@
       z-index: 2;
     }
 
+    #contentBox {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+
     @keyframes floaty {
       0%   { transform: translateY(0px); }
       50%  { transform: translateY(-6px); }
@@ -72,7 +82,7 @@
     /* 👀 Shake animation */
     .shake {
       display: inline-block;
-      animation: shake 0.6s infinite;
+      animation: shake 0.3s infinite;
     }
 
     @keyframes shake {
@@ -115,9 +125,11 @@
 <body>
 
   <h1 id="title"></h1>
+  <div id="contentBox">
   <div id="message"></div>
-
   <img id="photo" src="" alt="gif"/>
+  </div>
+
 
   <button id="nextBtn" onclick="nextLine()">Next ➝</button>
 
