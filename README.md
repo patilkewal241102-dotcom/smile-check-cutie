@@ -34,7 +34,7 @@
       z-index: 2;
     }
 
-    /* ✅ FIXED GIF SIZE */
+    
     img {
       margin-top: 20px;
       width: 280px;
