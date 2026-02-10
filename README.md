@@ -8,54 +8,72 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
       background: #fff5f8;
-      padding: 50px;
-      overflow: hidden;
       margin: 0;
+      padding: 0;
+      overflow: hidden;
+
+      /* ✅ Perfect page centering */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 100vh;
+      text-align: center;
     }
 
     h1 {
-      font-size: 2.4rem;
-      margin-bottom: 25px;
-      min-height: 70px;
-      position: relative;
+      font-size: 2.3rem;
+      min-height: 60px;
+      margin-bottom: 10px;
+      z-index: 2;
+    }
+
+    /* ✅ Content Box Centered */
+    #contentBox {
+      width: 420px;
+      padding: 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 15px;
       z-index: 2;
     }
 
     #message {
-      font-size: 1.4rem;
-      margin: 25px auto;
-      max-width: 650px;
-      line-height: 1.7;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      min-height: 80px;
       white-space: pre-line;
-      min-height: 90px;
-      position: relative;
-      z-index: 2;
     }
 
-   /* ✅ FIXED GIF SIZE */ 
+    /* ✅ GIF Always Center */
     img {
-     width: 280px;
-     height: 220px;
-     object-fit: contain;
+      width: 260px;
+      height: 220px;
+      object-fit: contain;
 
-     border-radius: 20px;
-     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-radius: 18px;
+      background: white;
+      padding: 8px;
 
-     /* ✅ Always centered */
-     display: block;
-     margin: 20px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 
-     background: white;
-     padding: 8px;
+      margin-top: 18px;
 
-    /* ✅ Keep space reserved, no jumping */
-    visibility: hidden;
-  }
+      visibility: hidden;
+    }
 
-
+    /* ✅ Button Always Below */
     button {
+      margin-top: 25px;
       padding: 12px 28px;
       font-size: 1rem;
       border: none;
@@ -63,94 +81,56 @@
       background: #ff4d6d;
       color: white;
       cursor: pointer;
-      margin-top: 25px;
-      animation: floaty 1.6s ease-in-out infinite;
-      position: relative;
       z-index: 2;
     }
 
-    #contentBox {
-      max-width: 420px;
-      margin: 0 auto;
-      padding: 25px;
-      border-radius: 25px;
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-
-      /* ✅ Perfect vertical centering */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-     
+    button:hover {
+      opacity: 0.9;
     }
 
-
-    @keyframes floaty {
-      0%   { transform: translateY(0px); }
-      50%  { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
-    }
-
-    /* 👀 Shake animation */
-    .shake {
-      display: inline-block;
-      animation: shake 0.3s infinite;
-    }
-
-    @keyframes shake {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(2px, -2px); }
-      50% { transform: translate(-2px, 2px); }
-      75% { transform: translate(2px, 2px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    /* 💗 Floating Hearts */
+    /* Floating hearts */
     .heart {
       position: absolute;
       font-size: 22px;
       animation: floatUp 4s linear infinite;
-      opacity: 0.8;
+      opacity: 0.7;
       z-index: 1;
     }
 
     @keyframes floatUp {
       0% { transform: translateY(0); opacity: 0.9; }
-      100% { transform: translateY(-700px); opacity: 0; }
+      100% { transform: translateY(-800px); opacity: 0; }
     }
 
+    /* Final section */
     #finalSection {
       display: none;
-      margin-top: 35px;
-      position: relative;
+      margin-top: 25px;
       z-index: 2;
     }
 
     #noReply {
-      margin-top: 20px;
+      margin-top: 18px;
       font-size: 1.2rem;
-      min-height: 40px;
+      min-height: 35px;
     }
   </style>
 </head>
 
 <body>
 
-  <h1 id="title"></h1>
-  <div id="contentBox">
-  <div id="message"></div>
-  <img id="photo" src="" alt="gif"/>
-  </div>
+  <h1 id="title">heyyyyyyyyyyyyyyyyy 👀</h1>
 
+  <div id="contentBox">
+    <div id="message">Click next 😌</div>
+    <img id="photo" src="" alt="gif"/>
+  </div>
 
   <button id="nextBtn" onclick="nextLine()">Next ➝</button>
 
-  <!-- Final Yes/No Section -->
+  <!-- Final Yes/No -->
   <div id="finalSection">
-    <div style="font-size:1.4rem; margin-bottom:20px;">
+    <div style="font-size:1.4rem; margin-bottom:15px;">
       Be honest… You smiled a little, didn’t you? 👀
     </div>
 
@@ -161,31 +141,9 @@
   </div>
 
   <script>
-    /* --- INTRO TYPING --- */
-    const introText = "heyyyyyyyyyyyyyyyyy ";
-    let introIndex = 0;
-    let introDone = false;
-
-    function typeIntro() {
-      if (introIndex < introText.length) {
-        document.getElementById("title").innerText += introText[introIndex];
-        introIndex++;
-        setTimeout(typeIntro, 120);
-      } else {
-        document.getElementById("title").innerHTML +=
-          `<span class="shake">👀</span>`;
-        document.getElementById("message").innerText =
-          "Click next 😌";
-        introDone = true;
-      }
-    }
-    typeIntro();
-
-    /* --- STORY STAGES --- */
-    let stage = 0; // 0=intro, 1=valentine card, 2=story
-
-    /* --- STORY LINES --- */
+    /* --- STORY --- */
     const lines = [
+      { text: "💖 Happy Valentine’s Day, Jenso", img: "" },
       { text: "This isn’t a big question.", img: "gif0.gif" },
       { text: "Just a small message from me…", img: "gif00.gif" },
       { text: "I’m really grateful that you’re in my life.", img: "gif1.gif" },
@@ -195,132 +153,73 @@
       { text: "found my favorite person 🤍", img: "collage.jpg" }
     ];
 
+    /* Preload images */
+    ["gif0.gif","gif00.gif","gif1.gif","gif3.gif","gif4.gif","collage.jpg"]
+      .forEach(src => { let i = new Image(); i.src = src; });
+
     let index = 0;
+    const msg = document.getElementById("message");
+    const photo = document.getElementById("photo");
 
-    /* --- PRELOAD GIFS FOR INSTANT SWITCHING --- */
-const preloadImages = [
-  "gif0.gif",
-  "gif00.gif",
-  "gif1.gif",
-  "gif3.gif",
-  "gif4.gif",
-  "collage.jpg"
-];
-
-preloadImages.forEach(src => {
-  const img = new Image();
-  img.src = src;
-});
-
-
-    /* --- HEARTS --- */
-    function startHearts() {
-      for (let i = 0; i < 18; i++) {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💗";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = (Math.random() * 400 + 200) + "px";
-        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 5000);
+    function hearts() {
+      for (let i = 0; i < 12; i++) {
+        let h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "💗";
+        h.style.left = Math.random() * window.innerWidth + "px";
+        h.style.top = Math.random() * window.innerHeight + "px";
+        h.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
       }
     }
 
-    /* --- NEXT BUTTON --- */
     function nextLine() {
-      if (!introDone) return;
-
-      // Valentine Title Card Screen
-      if (stage === 0) {
-        document.getElementById("title").innerText =
-          "💖 Happy Valentine’s Day, Jenso";
-        document.getElementById("message").innerText = "";
-        startHearts();
-        stage = 1;
-        return;
-      }
-
-      // Hide title and start story
-      if (stage === 1) {
-        document.getElementById("title").style.display = "none";
-        stage = 2;
-      }
-
-      // Show Story
       if (index < lines.length) {
-        document.getElementById("message").innerText =
-          lines[index].text;
-
-        const photo = document.getElementById("photo");
+        msg.innerText = lines[index].text;
 
         if (lines[index].img !== "") {
-        // Hide GIF but keep position
-        photo.style.visibility = "hidden";
-
-        // Show new GIF instantly once loaded
-        photo.onload = () => {
-        photo.style.visibility = "visible";
-      };
-
-photo.src = lines[index].img;
-      } else {
-      photo.style.visibility = "hidden";
-      }
-
+          photo.style.visibility = "hidden";
+          photo.onload = () => {
+            photo.style.visibility = "visible";
+          };
+          photo.src = lines[index].img;
+        } else {
+          photo.style.visibility = "hidden";
         }
 
+        hearts();
         index++;
-      }
-
-      // End → Final Section
-      else {
-        document.getElementById("message").style.display = "none";
-        document.getElementById("photo").style.display = "none";
+      } else {
         document.getElementById("nextBtn").style.display = "none";
-
         document.getElementById("finalSection").style.display = "block";
       }
     }
 
-    /* --- FINAL YES/NO --- */
+    /* YES/NO */
     let noCount = 0;
     let escapeMode = false;
-
     const noBtn = document.getElementById("noBtn");
 
-    // Hover runaway after escapeMode is true
     noBtn.addEventListener("mouseover", () => {
       if (!escapeMode) return;
-
-      const x = Math.random() * (window.innerWidth - 140);
-      const y = Math.random() * (window.innerHeight - 80);
-
       noBtn.style.position = "absolute";
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+      noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+      noBtn.style.top = Math.random() * (window.innerHeight - 60) + "px";
     });
 
     function yesClicked() {
       document.getElementById("noReply").innerText =
-        "Hehe… that’s all I wanted 😌🤍\njust a little smile.";
+        "Hehe… that’s all I wanted 😌🤍";
     }
 
     function noClicked() {
       noCount++;
-
       const reply = document.getElementById("noReply");
 
-      if (noCount === 1) {
-        reply.innerText = "I bet you’re smiling right now 😙";
-      }
-      else if (noCount === 2) {
-        reply.innerText = "you liarrrrrrrrrr 🥺";
-      }
-      else if (noCount === 3) {
-        reply.innerText = "c’monnnnnnnnn😩";
-      }
+      if (noCount === 1) reply.innerText = "I bet you’re smiling right now 😙";
+      else if (noCount === 2) reply.innerText = "you liarrrrrrrrrr 🥺";
+      else if (noCount === 3) reply.innerText = "c’monnnnnnnnn😩";
       else {
         reply.innerText = "nope 😈 you’re not clicking No anymore.";
         escapeMode = true;
