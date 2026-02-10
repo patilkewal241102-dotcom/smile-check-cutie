@@ -170,6 +170,22 @@
 
     let index = 0;
 
+    /* --- PRELOAD GIFS FOR INSTANT SWITCHING --- */
+const preloadImages = [
+  "gif0.gif",
+  "gif00.gif",
+  "gif1.gif",
+  "gif3.gif",
+  "gif4.gif",
+  "collage.jpg"
+];
+
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
+
     /* --- HEARTS --- */
     function startHearts() {
       for (let i = 0; i < 18; i++) {
@@ -213,8 +229,16 @@
         const photo = document.getElementById("photo");
 
         if (lines[index].img !== "") {
-          photo.src = lines[index].img;
+          // Hide old GIF instantly
+          photo.style.display = "none";
+
+          // Show new GIF only when loaded
+          photo.onload = () => {
           photo.style.display = "block";
+          };
+
+photo.src = lines[index].img;
+
         }
 
         index++;
