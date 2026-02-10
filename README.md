@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Jenso 💖</title>
+  <title>For Jenso 💗</title>
 
   <style>
     body {
@@ -36,21 +36,24 @@
 
    /* ✅ FIXED GIF SIZE */ 
     img {
-      margin-top: 20px;
-      width: 280px;
-      height: 220px;
-      object-fit: contain;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      display: none;
-       /* ✅ ADD THESE */
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 2;
-      background: white;
-      padding: 8px;
-    }
+     width: 280px;
+     height: 220px;
+     object-fit: contain;
+
+     border-radius: 20px;
+     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+     /* ✅ Always centered */
+     display: block;
+     margin: 20px auto;
+
+     background: white;
+     padding: 8px;
+
+    /* ✅ Keep space reserved, no jumping */
+    visibility: hidden;
+  }
+
 
     button {
       padding: 12px 28px;
@@ -245,15 +248,16 @@ preloadImages.forEach(src => {
         const photo = document.getElementById("photo");
 
         if (lines[index].img !== "") {
-          // Hide old GIF instantly
-          photo.style.display = "none";
+        // Hide GIF but keep position
+        photo.style.visibility = "hidden";
 
-          // Show new GIF only when loaded
-          photo.onload = () => {
-          photo.style.display = "block";
-          };
+        // Show new GIF instantly once loaded
+        photo.onload = () => {
+        photo.style.visibility = "visible";
+      };
 
 photo.src = lines[index].img;
+
 
         }
 
