@@ -70,7 +70,7 @@
     }
 
     #contentBox {
-      max-width: 700px;
+      max-width: 420px;
       margin: 0 auto;
       padding: 25px;
       border-radius: 25px;
