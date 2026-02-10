@@ -42,7 +42,7 @@
       object-fit: contain;
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      display: block;
+      display: none;
        /* ✅ ADD THESE */
       margin-left: auto;
       margin-right: auto;
@@ -73,6 +73,8 @@
       border-radius: 25px;
       background: rgba(255, 255, 255, 0.7);
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      
+      text-align: center;
     }
 
 
