@@ -257,7 +257,9 @@ preloadImages.forEach(src => {
       };
 
 photo.src = lines[index].img;
-
+      } else {
+      photo.style.visibility = "hidden";
+      }
 
         }
 
