@@ -35,8 +35,8 @@
       width: 420px;
       padding: 25px;
       border-radius: 25px;
-      background: rgba(255, 255, 255, 0.75);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      background: transparent;
+      box-shadow: none;
 
       display: flex;
       flex-direction: column;
@@ -55,21 +55,22 @@
     }
 
     /* ✅ GIF Always Center */
-    img {
+   img {
       width: 260px;
       height: 220px;
       object-fit: contain;
 
-      border-radius: 18px;
-      background: white;
-      padding: 8px;
-
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      /* ✅ Remove border/card */
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
 
       margin-top: 18px;
 
       visibility: hidden;
-    }
+     }
+
 
     /* ✅ Button Always Below */
     button {
