@@ -127,6 +127,11 @@
     <img id="photo" src="" alt="gif"/>
   </div>
 
+    <!-- 🎶 Background Music -->
+    <audio id="bgMusic" loop>
+    <source src="her.mp3" type="audio/mpeg">
+  </audio>
+  
   <button id="nextBtn" onclick="nextLine()">Next ➝</button>
 
   <!-- Final Yes/No -->
@@ -176,6 +181,15 @@
     }
 
     function nextLine() {
+
+      // 🎶 Start music on first click only
+    if (!window.musicStarted) {
+    const music = document.getElementById("bgMusic");
+    music.play().catch(() => {});
+    window.musicStarted = true;
+   }
+
+      
       if (index < lines.length) {
         msg.innerText = lines[index].text;
 
