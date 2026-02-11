@@ -141,7 +141,7 @@
       Be honest… You smiled a little, didn’t you? 👀
     </div>
 
-    <button onclick="yesClicked()">Yes 🤍</button>
+    <button id="yesBtn" onclick="yesClicked()">Yes 🤍</button>
     <button id="noBtn" onclick="noClicked()">No 🙄</button>
 
     <div id="noReply"></div>
@@ -219,6 +219,7 @@
 
     noBtn.addEventListener("mouseover", () => {
       if (!escapeMode) return;
+      moveNoButton();
       noBtn.style.position = "absolute";
       noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
       noBtn.style.top = Math.random() * (window.innerHeight - 60) + "px";
@@ -229,8 +230,27 @@
         "Hehe… that’s all I wanted 😌🤍";
     }
 
+    function moveNoButton() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+    
     function noClicked() {
+       const yesBtn = document.getElementById("yesBtn");
+       let yesSize = 1;
+
       noCount++;
+      
+      // ✅ Grow Yes button slightly each time
+      yesSize += 0.15;
+      yesBtn.style.transform = `scale(${yesSize})`;
+
+      
       const reply = document.getElementById("noReply");
 
       if (noCount === 1) reply.innerText = "I bet you’re smiling right now 😙";
@@ -239,6 +259,9 @@
       else {
         reply.innerText = "nope 😈 you’re not clicking No anymore.";
         escapeMode = true;
+
+        // ✅ Move instantly right away
+         moveNoButton();
       }
     }
   </script>
