@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-
+      
       
       /* ✅ Perfect page centering */
       display: flex;
@@ -24,6 +24,15 @@
       text-align: center;
     }
 
+      #choiceButtons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px; /* ✅ more space */
+      margin-top: 15px;
+    }
+
+    
     h1 {
       font-size: 2.3rem;
       min-height: 60px;
@@ -116,6 +125,21 @@
       font-size: 1.2rem;
       min-height: 35px;
     }
+
+  /* ✅ Shake animation for YES button (final stage) */
+  @keyframes yesShake {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(-3deg); }
+    50%  { transform: rotate(3deg); }
+    75%  { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+ .shakyYes {
+    animation: yesShake 0.4s infinite;
+  }
+
+    
   </style>
 </head>
 
@@ -141,8 +165,11 @@
       Be honest… You smiled a little, didn’t you? 👀
     </div>
 
-    <button id="yesBtn" onclick="yesClicked()">Yes 🤍</button>
-    <button id="noBtn" onclick="noClicked()">No 🙄</button>
+    <div id="choiceButtons">
+      <button id="yesBtn" onclick="yesClicked()">Yes 🤍</button>
+      <button id="noBtn" onclick="noClicked()">No 🙄</button>
+   </div>
+
 
     <div id="noReply"></div>
   </div>
@@ -257,6 +284,8 @@
       else {
         reply.innerText = "nope 😈 you’re not clicking No anymore.";
         escapeMode = true;
+
+        yesBtn.classList.add("shakyYes");
 
         // ✅ Move instantly right away
          moveNoButton();
