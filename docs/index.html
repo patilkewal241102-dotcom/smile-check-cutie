@@ -220,9 +220,7 @@
     noBtn.addEventListener("mouseover", () => {
       if (!escapeMode) return;
       moveNoButton();
-      noBtn.style.position = "absolute";
-      noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
-      noBtn.style.top = Math.random() * (window.innerHeight - 60) + "px";
+      
     });
 
     function yesClicked() {
