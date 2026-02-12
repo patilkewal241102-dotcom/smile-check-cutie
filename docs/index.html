@@ -126,6 +126,20 @@
       min-height: 35px;
     }
 
+    .shake {
+      display: inline-block;
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, 2px); }
+    100% { transform: translate(0, 0); }
+    }
+
+
   /* ✅ Shake animation for YES button (final stage) */
   @keyframes yesShake {
     0%   { transform: rotate(0deg); }
@@ -136,7 +150,7 @@
   }
 
  .shakyYes {
-    animation: yesShake 0.4s infinite;
+    animation: yesShake 0.3s infinite;
   }
 
     
@@ -145,7 +159,7 @@
 
 <body>
 
-  <h1 id="title">heyyyyyyyyyyyyyyyyy 👀</h1>
+<h1 id="title"></h1>
 
   <div id="contentBox">
     <div id="message">Click next 😌</div>
@@ -175,6 +189,27 @@
   </div>
 
   <script>
+
+  /* --- INTRO TYPING --- */
+  const introText = "heyyyyyyyyyyyyyyyyy ";
+  let introIndex = 0;
+
+  function typeIntro() {
+    const title = document.getElementById("title");
+
+    if (introIndex < introText.length) {
+      title.innerText += introText[introIndex];
+      introIndex++;
+      setTimeout(typeIntro, 120);
+     } else {
+     // Add shaking eye at the end
+     title.innerHTML += `<span class="shake">👀</span>`;
+     }
+   }
+
+    typeIntro();
+
+    
     /* --- STORY --- */
     const lines = [
       { text: "💖 Happy Valentine’s Day, Jenso", img: "" },
