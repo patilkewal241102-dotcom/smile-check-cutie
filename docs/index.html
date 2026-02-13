@@ -85,7 +85,10 @@
                                         width: 100vw !important;
                                         height: 100vh !important;
                                       
-                                        object-fit: contain !important;   /* ✅ full collage visible */
+                                        object-fit: contain !important;  /* ✅ NO CROPPING */
+                                      
+                                        background: #fff5f8;            /* ✅ Removes black borders */
+                                      
                                         position: fixed;
                                         top: 0;
                                         left: 0;
@@ -95,24 +98,8 @@
                                       }
 
 
-                                        /* ✅ Blurred collage background */
-                                    .collageBlurBg {
-                                      position: fixed;
-                                      top: 0;
-                                      left: 0;
-                                    
-                                      width: 100vw;
-                                      height: 100vh;
-                                    
-                                      background-image: url("collage.png");
-                                      background-size: cover;
-                                      background-position: center;
-                                    
-                                      filter: blur(25px);
-                                      transform: scale(1.1);
-                                    
-                                      z-index: 998;
-                                    }
+
+                                       
 
 
 
@@ -362,9 +349,7 @@
                                           if (lines[index].img.includes("collage")) {
                                             photo.classList.add("fullscreenCollage");
                                           
-                                            // ✅ Add blurred background behind collage
-                                            document.body.classList.add("collageBlurBg");
-                                          }
+                                            
 
 
 
