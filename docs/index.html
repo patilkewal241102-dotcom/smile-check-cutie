@@ -85,8 +85,7 @@
                                         width: 100vw !important;
                                         height: 100vh !important;
                                       
-                                        object-fit: cover !important;  /* ✅ full screen, no borders */
-                                      
+                                        object-fit: contain !important;   /* ✅ full collage visible */
                                         position: fixed;
                                         top: 0;
                                         left: 0;
@@ -94,6 +93,26 @@
                                         z-index: 999;
                                         visibility: visible !important;
                                       }
+
+
+                                        /* ✅ Blurred collage background */
+                                    .collageBlurBg {
+                                      position: fixed;
+                                      top: 0;
+                                      left: 0;
+                                    
+                                      width: 100vw;
+                                      height: 100vh;
+                                    
+                                      background-image: url("collage.png");
+                                      background-size: cover;
+                                      background-position: center;
+                                    
+                                      filter: blur(25px);
+                                      transform: scale(1.1);
+                                    
+                                      z-index: 998;
+                                    }
 
 
 
@@ -333,13 +352,21 @@
             photo.style.visibility = "visible";
           };
 
-                    // ✅ Remove collage mode by default
-                    photo.classList.remove("fullscreenCollage");
+                                          // ✅ Remove collage mode by default
+                                          photo.classList.remove("fullscreenCollage");
+                                          
+                                          // ✅ Always remove blur background first
+                                          document.body.classList.remove("collageBlurBg");
+                                          
+                                          // ✅ If it's the collage page, enable fullscreen + blur
+                                          if (lines[index].img.includes("collage")) {
+                                            photo.classList.add("fullscreenCollage");
+                                          
+                                            // ✅ Add blurred background behind collage
+                                            document.body.classList.add("collageBlurBg");
+                                          }
 
-                    // ✅ If it's the final collage, make it fullscreen
-                    if (lines[index].img.includes("collage")) {
-                    photo.classList.add("fullscreenCollage");
-                  }
+
 
           
           photo.src = lines[index].img;
