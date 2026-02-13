@@ -80,21 +80,24 @@
 
       visibility: hidden;
      }
-              /* ✅ Fullscreen collage mode */
-              .fullscreenCollage {
-              width: 100vw !important;
-              height: 100vh !important;
-              object-fit: cover !important;
+                                        /* ✅ Fullscreen collage mode */
+                                        .fullscreenCollage {
+                            width: 100vw !important;
+                            height: 100vh !important;
+                          
+                            object-fit: contain !important;  /* ✅ shows full collage */
+                            background: black;              /* optional: fills empty space */
+                          
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                          
+                            margin: 0 !important;
+                            z-index: 999;
+                          
+                            visibility: visible !important;
+                          }
 
-              position: fixed;
-              top: 0;
-              left: 0;
-
-              margin: 0 !important;
-              z-index: 999;
-
-              visibility: visible !important;
-            }
 
 .whiteText {
   color: white !important;
@@ -211,7 +214,7 @@
 <h1 id="title"></h1>
 
   <div id="contentBox">
-    <div id="message">Click next 😌</div>
+    <div id="message"></div>
     <img id="photo" src="" alt="gif"/>
   </div>
 
@@ -253,6 +256,7 @@
      } else {
      // Add shaking eye at the end
      title.innerHTML += `<span class="shake">👀</span>`;
+      document.getElementById("message").innerText = "Click next 😌";
      }
    }
 
