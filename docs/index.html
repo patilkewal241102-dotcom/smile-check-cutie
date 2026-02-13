@@ -101,7 +101,7 @@
                                                   /* ✅ Text overlay on collage */
                                   .overlayText {
                                     position: fixed;
-                                    top: 8%;
+                                    top: 15%;
                                     left: 50%;
                                     transform: translateX(-50%);
                                     z-index: 1000;
@@ -295,8 +295,15 @@
                   
                   // ✅ If collage page, overlay the text
                   if (lines[index].img.includes("collage")) {
-                    msg.classList.add("overlayText");
-                  }
+                  msg.classList.add("overlayText");
+                
+                  // ✅ Make text white for collage + after
+                  msg.style.color = "white";
+                } else {
+                  // ✅ Normal text color for earlier pages
+                  msg.style.color = "black";
+                }
+
 
 
 
