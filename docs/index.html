@@ -96,6 +96,9 @@
               visibility: visible !important;
             }
 
+.whiteText {
+  color: white !important;
+}
 
 
                                                   /* ✅ Text overlay on collage */
@@ -105,7 +108,10 @@
                                     left: 50%;
                                     transform: translateX(-50%);
                                     z-index: 1000;
-                                  
+
+                                    width: 100%;
+                                    text-align: center;
+                                    
                                     font-size: 2rem;
                                     font-weight: bold;
                                     color: white;
@@ -186,6 +192,12 @@
     animation: yesShake 0.3s infinite;
   }
 
+                        .whiteText {
+                          color: white !important;
+                        }
+
+                        
+                            
     
   </style>
 </head>
@@ -293,16 +305,17 @@
                           // ✅ Remove overlay mode normally
                   msg.classList.remove("overlayText");
                   
-                  // ✅ If collage page, overlay the text
-                  if (lines[index].img.includes("collage")) {
-                  msg.classList.add("overlayText");
-                
-                  // ✅ Make text white for collage + after
-                  msg.style.color = "white";
-                } else {
-                  // ✅ Normal text color for earlier pages
-                  msg.style.color = "black";
-                }
+                                               
+                                              // Reset classes every click
+                              msg.classList.remove("overlayText");
+                              msg.classList.remove("whiteText");
+                              
+                              // Collage page styling
+                              if (lines[index].img.includes("collage")) {
+                                msg.classList.add("overlayText");
+                                msg.classList.add("whiteText");
+                              }
+
 
 
 
