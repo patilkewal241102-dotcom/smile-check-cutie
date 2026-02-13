@@ -80,6 +80,21 @@
 
       visibility: hidden;
      }
+              /* ✅ Fullscreen collage mode */
+              .fullscreenCollage {
+              width: 100vw !important;
+              height: 100vh !important;
+              object-fit: cover !important;
+
+              position: fixed;
+              top: 0;
+              left: 0;
+
+              margin: 0 !important;
+              z-index: 999;
+
+              visibility: visible !important;
+            }
 
 
     /* ✅ Button Always Below */
@@ -261,6 +276,16 @@
           photo.onload = () => {
             photo.style.visibility = "visible";
           };
+
+                    // ✅ Remove collage mode by default
+                    photo.classList.remove("fullscreenCollage");
+
+                    // ✅ If it's the final collage, make it fullscreen
+                    if (lines[index].img.includes("collage")) {
+                    photo.classList.add("fullscreenCollage");
+                  }
+
+          
           photo.src = lines[index].img;
         } else {
           photo.style.visibility = "hidden";
