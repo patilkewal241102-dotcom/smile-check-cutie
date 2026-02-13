@@ -97,6 +97,24 @@
             }
 
 
+
+                                                  /* ✅ Text overlay on collage */
+                                  .overlayText {
+                                    position: fixed;
+                                    top: 8%;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    z-index: 1000;
+                                  
+                                    font-size: 2rem;
+                                    font-weight: bold;
+                                    color: white;
+                                  
+                                    text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+                                  }
+
+    
+
     /* ✅ Button Always Below */
     button {
       margin-top: 25px;
@@ -270,6 +288,18 @@
       
       if (index < lines.length) {
         msg.innerText = lines[index].text;
+
+
+                          // ✅ Remove overlay mode normally
+                  msg.classList.remove("overlayText");
+                  
+                  // ✅ If collage page, overlay the text
+                  if (lines[index].img.includes("collage")) {
+                    msg.classList.add("overlayText");
+                  }
+
+
+
 
         if (lines[index].img !== "") {
           photo.style.visibility = "hidden";
