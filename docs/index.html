@@ -333,31 +333,29 @@
 
 
 
-        if (lines[index].img !== "") {
-          photo.style.visibility = "hidden";
-          photo.onload = () => {
-            photo.style.visibility = "visible";
-          };
+                                              if (lines[index].img !== "") {
+                                      
+                                        photo.style.visibility = "hidden";
+                                      
+                                        photo.onload = () => {
+                                          photo.style.visibility = "visible";
+                                        };
+                                      
+                                        // Reset collage mode every time
+                                        photo.classList.remove("fullscreenCollage");
+                                      
+                                        // If collage page → fullscreen
+                                        if (lines[index].img.includes("collage")) {
+                                          photo.classList.add("fullscreenCollage");
+                                        }
+                                      
+                                        // Always update image source
+                                        photo.src = lines[index].img;
+                                      
+                                      } else {
+                                        photo.style.visibility = "hidden";
+                                      }
 
-                                          // ✅ Remove collage mode by default
-                                          photo.classList.remove("fullscreenCollage");
-                                          
-                                          // ✅ Always remove blur background first
-                                          document.body.classList.remove("collageBlurBg");
-                                          
-                                          // ✅ If it's the collage page, enable fullscreen + blur
-                                          if (lines[index].img.includes("collage")) {
-                                            photo.classList.add("fullscreenCollage");
-                                          
-                                            
-
-
-
-          
-          photo.src = lines[index].img;
-        } else {
-          photo.style.visibility = "hidden";
-        }
 
         hearts();
         index++;
